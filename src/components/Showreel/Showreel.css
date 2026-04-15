@@ -1,0 +1,25 @@
+.showreel {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  background-color: var(--base-100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.showreel .showreel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: scale(0.75);
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.showreel .showreel-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

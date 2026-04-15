@@ -1,0 +1,146 @@
+.how-it-works {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  background-color: var(--base-400);
+  color: var(--base-100);
+  overflow: hidden;
+}
+
+.how-it-works .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+/* ── Header ── */
+.how-it-works .hiw-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.how-it-works .hiw-header p.sm {
+  color: var(--base-300);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── Cards list ── */
+.how-it-works .hiw-cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.how-it-works .hiw-card {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  will-change: clip-path, transform;
+  transition: background 0.3s ease;
+}
+
+.how-it-works .hiw-card:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.how-it-works .hiw-card:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.how-it-works .hiw-card-inner {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr 13rem;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.1rem 0;
+}
+
+/* ── Step number ── */
+.how-it-works .hiw-num {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.12);
+  transition: color 0.3s ease;
+}
+
+.how-it-works .hiw-card:hover .hiw-num {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Body: title + description ── */
+.how-it-works .hiw-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.how-it-works .hiw-card-body h3 {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-size: 2.25rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--base-100);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.how-it-works .hiw-card-body p.lg {
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 36rem;
+  line-height: 1.5;
+  font-size: 0.85rem;
+}
+
+/* ── Tag ── */
+.how-it-works .hiw-tag {
+  text-align: right;
+  color: var(--base-300);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+
+/* ── Mobile ── */
+@media (max-width: 1000px) {
+  .how-it-works {
+    height: auto;
+  }
+
+  .how-it-works .container {
+    gap: 3rem;
+    height: auto;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .how-it-works .hiw-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .how-it-works .hiw-card-inner {
+    grid-template-columns: 4rem 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem 1.5rem;
+    padding: 1.5rem 0;
+  }
+
+  .how-it-works .hiw-num {
+    font-size: 3rem;
+  }
+
+  .how-it-works .hiw-card-body h3 {
+    font-size: 2rem;
+  }
+
+  .how-it-works .hiw-tag {
+    grid-column: 2;
+    text-align: left;
+    padding-top: 0;
+  }
+}

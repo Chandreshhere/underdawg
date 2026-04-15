@@ -1,0 +1,89 @@
+.the-problem {
+  position: relative;
+  width: 100%;
+  background-color: var(--base-100);
+  padding: 8rem 0;
+  overflow: hidden;
+}
+
+.the-problem .problem-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 5rem;
+}
+
+.the-problem .problem-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.the-problem .problem-item {
+  position: relative;
+  padding: 4rem 0;
+}
+
+.the-problem .problem-line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--base-300);
+  transform-origin: left center;
+  transform: scaleX(0);
+  margin-bottom: 4rem;
+}
+
+.the-problem .problem-item-inner {
+  display: flex;
+  gap: 6rem;
+  align-items: flex-start;
+}
+
+.the-problem .problem-item-left {
+  width: 28%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+.the-problem .problem-item-right {
+  flex: 1;
+  padding-top: 0.5rem;
+}
+
+.the-problem .problem-blur-text {
+  will-change: filter, opacity;
+}
+
+@media (max-width: 1000px) {
+  .the-problem {
+    padding: 6rem 0;
+  }
+
+  .the-problem .problem-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .the-problem .problem-item-inner {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .the-problem .problem-item-left {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .the-problem .problem-item {
+    padding: 2.5rem 0;
+  }
+
+  .the-problem .problem-line {
+    margin-bottom: 2.5rem;
+  }
+}

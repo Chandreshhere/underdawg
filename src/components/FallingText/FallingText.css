@@ -1,0 +1,43 @@
+.falling-text-container {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.falling-text-container:active {
+  cursor: grabbing;
+}
+
+.falling-text-target {
+  position: relative;
+  z-index: 1;
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.05rem;
+  line-height: 0.95;
+  pointer-events: none;
+}
+
+.falling-text-target .word {
+  display: inline-block;
+  white-space: nowrap;
+  color: var(--base-100);
+}
+
+.falling-text-target .word.highlighted {
+  color: var(--base-500);
+}
+
+.falling-text-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.falling-text-canvas canvas {
+  display: block;
+}
