@@ -56,14 +56,14 @@
 
 @media (max-width: 1000px) {
   .creator-journey {
-    padding: 6rem 0;
+    padding: 5rem 0;
   }
 
   .creator-journey .journey-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
-    padding-bottom: 3rem;
+    padding-bottom: 2.5rem;
   }
 
   .creator-journey .journey-cards {
@@ -72,5 +72,25 @@
 
   .creator-journey .journey-card:nth-child(5) {
     grid-column: span 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .creator-journey {
+    padding: 3.5rem 0;
+  }
+
+  .creator-journey .journey-header {
+    gap: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  .creator-journey .journey-card {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .creator-journey .journey-cards {
+    gap: 1rem;
   }
 }

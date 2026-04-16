@@ -1,9 +1,9 @@
 "use client";
-import { useTransitionRouter } from "next-view-transitions";
+import { useRouter } from "next/navigation";
 import { gsap } from "gsap";
 
 export const useViewTransition = () => {
-  const router = useTransitionRouter();
+  const router = useRouter();
 
   function createSVGOverlay() {
     let overlay = document.querySelector(".page-transition-overlay");
@@ -51,38 +51,33 @@ export const useViewTransition = () => {
       .set(overlayPath, {
         attr: { d: paths.step1.unfilled },
       })
-      .to(
-        overlayPath,
-        {
-          duration: 0.6,
-          ease: "power4.in",
-          attr: { d: paths.step1.inBetween },
-        },
-        0
-      )
       .to(overlayPath, {
-        duration: 0.2,
+        duration: 0.35,
+        ease: "power4.in",
+        attr: { d: paths.step1.inBetween },
+      })
+      .to(overlayPath, {
+        duration: 0.15,
         ease: "power1",
         attr: { d: paths.step1.filled },
         onComplete: () => {
           router.push(href);
-
           if (onRouteChange) {
             onRouteChange();
           }
         },
       })
-      .to({}, { duration: 0.75 })
+      .to({}, { duration: 0.3 })
       .set(overlayPath, {
         attr: { d: paths.step2.filled },
       })
       .to(overlayPath, {
-        duration: 0.15,
+        duration: 0.1,
         ease: "sine.in",
         attr: { d: paths.step2.inBetween },
       })
       .to(overlayPath, {
-        duration: 1,
+        duration: 0.55,
         ease: "power4",
         attr: { d: paths.step2.unfilled },
       });

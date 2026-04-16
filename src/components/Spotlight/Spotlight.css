@@ -92,3 +92,19 @@
     font-size: 2.5rem;
   }
 }
+
+@media (max-width: 480px) {
+  .spotlight .marquee-container {
+    width: 320%;
+    height: 110px;
+    margin-bottom: 0.75rem;
+  }
+
+  .spotlight .marquee-img-item h1 {
+    font-size: 1.75rem;
+  }
+
+  .spotlight .marquee {
+    gap: 0.5em;
+  }
+}

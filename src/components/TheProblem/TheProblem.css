@@ -46,6 +46,10 @@
   flex-shrink: 0;
 }
 
+.the-problem .problem-item-left h2 {
+  font-size: 4.5rem;
+}
+
 .the-problem .problem-item-right {
   flex: 1;
   padding-top: 0.5rem;

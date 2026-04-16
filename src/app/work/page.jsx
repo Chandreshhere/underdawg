@@ -1,17 +1,49 @@
 "use client";
 import "./work.css";
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useViewTransition } from "@/hooks/useViewTransition";
 import Copy from "@/components/Copy/Copy";
+import CTACard from "@/components/CTACard/CTACard";
+import Footer from "@/components/Footer/Footer";
 
 gsap.registerPlugin(useGSAP);
 
-const Page = () => {
-  const { navigateWithTransition } = useViewTransition();
+const moduleHighlights = [
+  {
+    index: "A",
+    title: "Built for the undiscovered",
+    body: "Every module assumes you haven't made it yet. No gatekeepers, no waitlists — just tools that turn raw talent into a repeatable career.",
+  },
+  {
+    index: "B",
+    title: "One login, every surface",
+    body: "Portfolio, deals, merch, distribution — they all speak to each other. Update once and your entire footprint moves with you.",
+  },
+  {
+    index: "C",
+    title: "Owned, not rented",
+    body: "Your audience, your payouts, your rights. The platform exists to route opportunity toward you, not lock it behind another algorithm.",
+  },
+];
 
+const platformStats = [
+  { value: "06", label: "Core Modules" },
+  { value: "24/7", label: "Creator Support" },
+  { value: "100%", label: "Creator Revenue" },
+  { value: "00", label: "Middlemen" },
+];
+
+const Page = () => {
   const workPageContainer = useRef(null);
+  const [activeFolder, setActiveFolder] = useState(null);
+
+  const handleFolderClick = (e, item) => {
+    e.preventDefault();
+    if (window.innerWidth < 1000) {
+      setActiveFolder((prev) => (prev === item.index ? null : item.index));
+    }
+  };
 
   const workItems = useMemo(
     () => [
@@ -200,24 +232,47 @@ const Page = () => {
 
   return (
     <>
-      {/* ── Page header ── */}
+      {/* ── Hero ── */}
       <section className="work-header">
-        <div className="work-header-inner">
-          <div className="work-header-left">
-            <Copy delay={0.75}>
-              <p className="sm">Explore the Platform</p>
+        <div className="work-header-grid">
+          <div className="work-header-meta">
+            <Copy delay={0.5}>
+              <p className="sm">( 01 — Platform Stack )</p>
+            </Copy>
+            <Copy delay={0.55}>
+              <p className="sm">06 Modules · Live</p>
             </Copy>
           </div>
-          <div className="work-header-right">
-            <Copy delay={0.85}>
-              <h1>Platform</h1>
+
+          <div className="work-header-title-group">
+            <Copy delay={0.7}>
+              <h1 className="work-header-title">
+                <span className="work-header-title-line">The Creator</span>
+                <span className="work-header-title-line work-header-title-accent">
+                  Operating
+                </span>
+                <span className="work-header-title-line">System</span>
+              </h1>
             </Copy>
-            <Copy delay={1.0}>
-              <p className="lg">
-                Six core modules. Each one a weapon for the emerging creator.
-                Hover to preview. Click to explore.
-              </p>
-            </Copy>
+          </div>
+
+          <div className="work-header-footer">
+            <div className="work-header-lead">
+              <Copy delay={0.9}>
+                <p className="lg">
+                  Six core modules. Each one a weapon for the emerging creator.
+                  <span className="work-header-lead-dim">
+                    {" "}
+                    Hover to preview on desktop. Tap to open on mobile.
+                  </span>
+                </p>
+              </Copy>
+            </div>
+            <div className="work-header-scroll">
+              <Copy delay={1.0}>
+                <p className="sm">Scroll ↓</p>
+              </Copy>
+            </div>
           </div>
         </div>
       </section>
@@ -226,13 +281,12 @@ const Page = () => {
         {[0, 1, 2].map((rowIndex) => (
           <div className="row" key={`row-${rowIndex}`}>
             {workItems.slice(rowIndex * 2, rowIndex * 2 + 2).map((item) => (
-              <a
+              <div
                 key={item.index}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigateWithTransition(item.href);
-                }}
+                className={`folder-link ${item.variant} ${
+                  activeFolder === item.index ? "active" : ""
+                }`}
+                onClick={(e) => handleFolderClick(e, item)}
               >
                 <div className={`folder ${item.variant}`}>
                   <div className="folder-preview">
@@ -251,14 +305,150 @@ const Page = () => {
                     </div>
                     <div className="folder-name">
                       <h1>{item.name}</h1>
+                      <span className="folder-toggle" aria-hidden="true">
+                        +
+                      </span>
                     </div>
                   </div>
                 </div>
-              </a>
+                <div className="folder-expand">
+                  <div className="folder-expand-images">
+                    {item.images.map((src, i) => (
+                      <img
+                        key={`expand-${item.index}-img-${i}`}
+                        src={src}
+                        alt={`${item.name} ${i + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         ))}
       </section>
+
+      {/* ── Intro: what the platform is ── */}
+      <section className="work-intro">
+        <div className="work-intro-inner">
+          <div className="work-intro-left">
+            <Copy animateOnScroll={true}>
+              <p className="sm">( What we build )</p>
+            </Copy>
+          </div>
+          <div className="work-intro-right">
+            <Copy animateOnScroll={true}>
+              <h2>
+                A stack that takes a creator from bedroom studio to booked out —
+                without ever handing the keys to a platform that won't give them back.
+              </h2>
+            </Copy>
+            <Copy animateOnScroll={true} delay={0.2}>
+              <p className="lg">
+                Underdawg is a modular operating system. Pick a module, plug it in,
+                keep your audience. Every tool is built to compound — your portfolio
+                feeds your deals, your deals feed your merch, your merch feeds the next
+                drop. No silos, no exports, no losing your work when a platform pivots.
+              </p>
+            </Copy>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Module highlights ── */}
+      <section className="work-highlights">
+        <div className="work-highlights-head">
+          <Copy animateOnScroll={true}>
+            <p className="sm">Principles behind the platform</p>
+          </Copy>
+        </div>
+        <div className="work-highlights-grid">
+          {moduleHighlights.map((h) => (
+            <div className="work-highlight" key={h.index}>
+              <div className="work-highlight-index">
+                <Copy animateOnScroll={true}>
+                  <p className="sm">{h.index}</p>
+                </Copy>
+              </div>
+              <Copy animateOnScroll={true}>
+                <h3>{h.title}</h3>
+              </Copy>
+              <Copy animateOnScroll={true} delay={0.15}>
+                <p>{h.body}</p>
+              </Copy>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Stats strip ── */}
+      <section className="work-stats">
+        <div className="work-stats-inner">
+          {platformStats.map((s, i) => (
+            <div className="work-stat" key={i}>
+              <Copy animateOnScroll={true} delay={i * 0.1}>
+                <p className="work-stat-value">{s.value}</p>
+              </Copy>
+              <Copy animateOnScroll={true} delay={i * 0.1 + 0.1}>
+                <p className="sm">{s.label}</p>
+              </Copy>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Process note ── */}
+      <section className="work-process">
+        <div className="work-process-inner">
+          <div className="work-process-col">
+            <Copy animateOnScroll={true}>
+              <p className="sm">( How a module ships )</p>
+            </Copy>
+            <Copy animateOnScroll={true} delay={0.1}>
+              <h3>Shipped in public, sharpened by creators</h3>
+            </Copy>
+          </div>
+          <div className="work-process-col">
+            <div className="work-process-step">
+              <Copy animateOnScroll={true}>
+                <p className="sm">01 — Signal</p>
+              </Copy>
+              <Copy animateOnScroll={true} delay={0.1}>
+                <p>
+                  We listen to the field log — DMs, reviews, creator calls — until a
+                  pattern starts repeating itself. That pattern becomes a brief.
+                </p>
+              </Copy>
+            </div>
+            <div className="work-process-step">
+              <Copy animateOnScroll={true}>
+                <p className="sm">02 — Build</p>
+              </Copy>
+              <Copy animateOnScroll={true} delay={0.1}>
+                <p>
+                  We prototype fast with a closed cohort of creators. If it doesn't
+                  earn its keep in the first week, it doesn't ship.
+                </p>
+              </Copy>
+            </div>
+            <div className="work-process-step">
+              <Copy animateOnScroll={true}>
+                <p className="sm">03 — Open</p>
+              </Copy>
+              <Copy animateOnScroll={true} delay={0.1}>
+                <p>
+                  Once the module holds up, it joins the platform — wired into every
+                  other module so the compounding begins on day one.
+                </p>
+              </Copy>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <CTACard />
+
+      <Footer />
     </>
   );
 };

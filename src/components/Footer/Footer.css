@@ -1,10 +1,10 @@
 footer {
   position: relative;
   width: 100vw;
-  height: 100.5svh;
+  height: auto;
   background-color: var(--base-400);
   color: var(--base-100);
-  padding: 2rem;
+  padding: 6rem 2rem 3rem;
 }
 
 footer .explosion-container {
@@ -35,11 +35,9 @@ footer img.explosion-particle-img {
 }
 
 footer .footer-header-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   width: 60%;
+  margin: 0 auto 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,12 +47,12 @@ footer .footer-header-content {
 }
 
 footer .footer-byline {
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  position: relative;
   width: 100%;
   display: flex;
-  padding: 2rem;
+  padding: 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 1.5rem;
 }
 
 footer .footer-byline > div {
@@ -86,7 +84,8 @@ footer .footer-byline p {
 
 @media (max-width: 1000px) {
   footer {
-    height: 100svh;
+    height: auto;
+    padding: 4rem 1.25rem 2.5rem;
   }
 
   footer .explosion-container {
@@ -95,7 +94,8 @@ footer .footer-byline p {
 
   footer .footer-header-content {
     width: 100%;
-    padding: 1.25rem;
+    margin: 0 auto 3rem;
+    gap: 1.5rem;
   }
 
   footer .footer-copyright {
@@ -107,6 +107,17 @@ footer .footer-byline p {
   }
 
   footer .footer-byline {
-    padding: 1.25rem;
+    padding-top: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  footer {
+    padding: 3rem 1rem 2rem;
+  }
+
+  footer .footer-header-content {
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
   }
 }

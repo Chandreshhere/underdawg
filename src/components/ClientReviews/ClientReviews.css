@@ -102,10 +102,25 @@
   }
 
   .client-reviews h3.review-card-text {
-    font-size: 2rem;
+    font-size: clamp(1.4rem, 5vw, 2rem);
   }
 
   .client-reviews .review-card {
     padding: 1.25rem 0 0 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .client-reviews .review-card-container {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .client-reviews h3.review-card-text {
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
+  }
+
+  .client-reviews .review-card-content-wrapper {
+    gap: 1.5rem;
   }
 }

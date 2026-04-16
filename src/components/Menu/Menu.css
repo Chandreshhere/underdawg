@@ -21,7 +21,7 @@ nav .nav-logo a {
 }
 
 nav .nav-logo-svg {
-  width: 9rem;
+  width: clamp(6rem, 15vw, 9rem);
   height: auto;
   display: block;
 }
@@ -161,6 +161,7 @@ nav .close-label {
   position: relative;
   will-change: transform;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .menu-overlay .menu-link a {
@@ -175,6 +176,9 @@ nav .close-label {
   letter-spacing: -0.125rem;
   display: inline-block;
   overflow: hidden;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .menu-overlay .menu-link a span:nth-child(2) {

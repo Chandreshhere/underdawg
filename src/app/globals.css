@@ -31,6 +31,11 @@ body {
   background-color: #000;
   color: var(--base-400);
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 h1,
@@ -126,19 +131,19 @@ p.cap {
 
 @media (max-width: 1000px) {
   h1 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 7vw, 3rem);
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: clamp(1.75rem, 5.5vw, 2rem);
   }
 
   h3 {
-    font-size: 1.5rem;
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
   }
 
   h4 {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 3vw, 1rem);
   }
 
   h1,
@@ -148,8 +153,12 @@ p.cap {
     letter-spacing: 0 !important;
   }
 
+  p {
+    font-size: clamp(0.95rem, 3vw, 1.25rem);
+  }
+
   p.lg {
-    font-size: 1.125rem;
+    font-size: clamp(1rem, 3.5vw, 1.125rem);
   }
 
   p.sm {
@@ -159,6 +168,36 @@ p.cap {
 
   .container {
     padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 6.5vw, 2rem);
+  }
+
+  h3 {
+    font-size: clamp(1.1rem, 5vw, 1.4rem);
+  }
+
+  h4 {
+    font-size: clamp(0.85rem, 4vw, 1rem);
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+
+  p.lg {
+    font-size: 1rem;
+  }
+
+  .container {
+    padding: 1rem;
   }
 }
 

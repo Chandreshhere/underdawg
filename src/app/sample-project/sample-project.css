@@ -134,20 +134,22 @@
 @media (max-width: 1000px) {
   .sample-project-page .project-header {
     padding: 1.25em 1.25em 3em 1.25em;
+    height: auto;
+    min-height: 40svh;
   }
 
   .sample-project-page .project-details {
     width: 100%;
-    padding: 6em 1.25em;
-    gap: 3em;
+    padding: 5em 1.25em;
+    gap: 2.5em;
   }
 
   .sample-project-page h3 {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 5vw, 2rem);
   }
 
   .sample-project-page .project-images {
-    padding: 4em 1.25em;
+    padding: 3em 1.25em;
   }
 
   .sample-project-page .project-images-container {
@@ -157,13 +159,39 @@
 
   .sample-project-page .next-project {
     padding: 1.25em;
+    height: 80svh;
   }
 
   .sample-project-page .next-project-img {
-    width: 75%;
+    width: 80%;
+    height: 300px;
   }
 
   .sample-project-page .project-img {
-    height: 65svh;
+    height: 60svh;
+  }
+}
+
+@media (max-width: 480px) {
+  .sample-project-page .project-img {
+    height: 50svh;
+  }
+
+  .sample-project-page .project-details {
+    padding: 4em 1rem;
+    gap: 2em;
+  }
+
+  .sample-project-page .next-project {
+    height: 70svh;
+  }
+
+  .sample-project-page .next-project-img {
+    width: 90%;
+    height: 250px;
+  }
+
+  .sample-project-page .project-banner-img {
+    height: 70svh;
   }
 }

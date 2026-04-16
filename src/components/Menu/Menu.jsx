@@ -36,10 +36,9 @@ const Menu = ({ pageRef }) => {
 
   const menuItems = [
     { label: "Home", route: "/" },
-    { label: "Work", route: "/work" },
+    { label: "Platform", route: "/work" },
     { label: "Studio", route: "/studio" },
-    { label: "Stories", route: "/stories" },
-    { label: "Contact", route: "/contact" },
+    { label: "Say Hello", route: "/contact" },
   ];
 
   const lerpFactor = 0.05;
@@ -433,11 +432,11 @@ const Menu = ({ pageRef }) => {
             href="/"
             onClick={(e) => {
               e.preventDefault();
+              if (isMenuAnimating) return;
+
               const currentPath = window.location.pathname;
-              if (currentPath === "/") {
-                return;
-              }
-              navigateWithTransition("/", isMenuOpen ? toggleMenu : null);
+              if (isMenuOpen) toggleMenu();
+              if (currentPath !== "/") navigateWithTransition("/");
             }}
           >
             <svg viewBox="0 0 172 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="nav-logo-svg">
@@ -498,18 +497,6 @@ const Menu = ({ pageRef }) => {
             }}
           >
             <div className="menu-content-group">
-              <p>Field Log</p>
-
-              <a href="https://www.instagram.com/codegridweb/" target="_blank">
-                Instagram
-              </a>
-
-              <a href="https://www.youtube.com/@codegrid" target="_blank">
-                YouTube
-              </a>
-            </div>
-
-            <div className="menu-content-group">
               <p>Language</p>
               <p>Human</p>
             </div>
@@ -527,39 +514,40 @@ const Menu = ({ pageRef }) => {
         </div>
 
         <div className="menu-links-wrapper" ref={menuLinksWrapperRef}>
-          {menuItems.map((item, index) => (
-            <div
-              key={item.label}
-              className="menu-link"
-              ref={(el) => {
-                menuLinkContainersRef.current[index] = el;
-              }}
-              onClick={(e) => {
-                e.preventDefault();
-                const currentPath = window.location.pathname;
-                if (currentPath === item.route) {
-                  if (isMenuOpen) {
-                    toggleMenu();
-                  }
-                  return;
-                }
-                navigateWithTransition(
-                  item.route,
-                  isMenuOpen ? toggleMenu : null
-                );
-              }}
-            >
-              <a
-                href={item.route}
+          {menuItems.map((item, index) => {
+            const handleSelect = (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (isMenuAnimating) return;
+
+              const currentPath = window.location.pathname;
+              const samePage = currentPath === item.route;
+
+              if (isMenuOpen) toggleMenu();
+              if (!samePage) navigateWithTransition(item.route);
+            };
+
+            return (
+              <div
+                key={item.label}
+                className="menu-link"
                 ref={(el) => {
-                  menuLinksRef.current[index] = el;
+                  menuLinkContainersRef.current[index] = el;
                 }}
               >
-                <span>{item.label}</span>
-                <span>{item.label}</span>
-              </a>
-            </div>
-          ))}
+                <a
+                  href={item.route}
+                  ref={(el) => {
+                    menuLinksRef.current[index] = el;
+                  }}
+                  onClick={handleSelect}
+                >
+                  <span>{item.label}</span>
+                  <span>{item.label}</span>
+                </a>
+              </div>
+            );
+          })}
 
           <div className="link-highlighter" ref={linkHighlighterRef}></div>
         </div>

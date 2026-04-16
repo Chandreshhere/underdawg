@@ -65,3 +65,35 @@
   text-decoration: none;
   color: inherit;
 }
+
+@media (max-width: 1000px) {
+  .featured-work-list {
+    padding: 4rem 1.25rem;
+    gap: 2rem;
+  }
+
+  .featured-work-list .row {
+    width: 100%;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .featured-work-list .featured-work-item-img {
+    aspect-ratio: 16/10;
+  }
+
+  .featured-work-list .featured-work-item-copy h3 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-work-list {
+    padding: 3rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .featured-work-list .featured-work-item-img {
+    aspect-ratio: 4/3;
+  }
+}

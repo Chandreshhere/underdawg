@@ -111,17 +111,33 @@
 
 @media (max-width: 1000px) {
   .preloader-header h1 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 8vw, 3rem);
     letter-spacing: 0;
   }
 
   .preloader-images {
-    width: 20rem;
-    height: 20rem;
+    width: min(20rem, 80vw);
+    height: min(20rem, 80vw);
   }
 
   .preloader-copy {
-    width: 80%;
-    padding: 0 2rem;
+    width: 85%;
+    padding: 0 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .preloader-header h1 {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+  }
+
+  .preloader-images {
+    width: min(16rem, 80vw);
+    height: min(16rem, 80vw);
+  }
+
+  .preloader-copy {
+    width: 90%;
+    bottom: 3.5rem;
   }
 }
